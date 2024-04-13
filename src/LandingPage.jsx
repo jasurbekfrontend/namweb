@@ -29,6 +29,13 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
+import { FaBars } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
+import { FaTools } from "react-icons/fa";
+import { FaInfo } from "react-icons/fa";
+import { PiBagSimpleFill } from "react-icons/pi";
+import { IoIosDocument } from "react-icons/io";
+import { MdFeedback } from "react-icons/md";
 const LandingPage = () => {
   const [clients, setClients] = useState([
     client1,
@@ -85,6 +92,9 @@ const LandingPage = () => {
         "Donec a eros justo. Fusce egestas tristique ultrices. Nam tempor, augue nec tincidunt molestie, massa nunc varius arcu, at scelerisque elit erat a magna. Donec quis erat at libero ultrices mollis. In hac habitasse platea dictumst. Vivamus vehicula leo dui, at porta nisi facilisis finibus. In euismod augue vitae nisi ultricies, non aliquet urna tincidunt. Integer in nisi eget nulla commodo faucibus efficitur quis massa. Praesent felis est, finibus et nisi ac, hendrerit venenatis libero. Donec consectetur faucibus ipsum id gravida.",
     },
   ]);
+
+  const [toggle, setToggle] = useState(false);
+
   return (
     <div className="wrapper">
       <div className="first-section">
@@ -98,13 +108,15 @@ const LandingPage = () => {
             <Link>Service</Link>
             <Link>Feature</Link>
             <Link>Product</Link>
-            <Link>Testimonial</Link>
             <Link>FAQ</Link>
           </div>
           <div className="nav-buttons">
-            <button>Login</button>
             <button>Sign up</button>
+            <button onClick={() => setToggle(!toggle)} className="drawer-toggle">
+            <FaBars />
+          </button>
           </div>
+ 
         </nav>
         <div className="section-body">
           <div className="section-title">
@@ -120,16 +132,46 @@ const LandingPage = () => {
           <div className="section-image">
             <img src={illustration} alt="" />
           </div>
+          <div
+            className="drawer"
+            style={
+              toggle
+                ? { transform: "translateX(0px)" }
+                : { transform: "translateX(300px)" }
+            }
+          >
+            <Link>
+              <FaHome /> Home
+            </Link>
+            <Link>
+              <FaTools /> Service
+            </Link>
+            <Link>
+              <FaInfo /> Feature
+            </Link>
+            <Link>
+              <PiBagSimpleFill />
+              Product
+            </Link>
+
+            <Link>
+              <MdFeedback />
+              FAQ
+            </Link>
+          </div>
         </div>
       </div>
       <div className="second-section">
         <b>Our Clients</b>
         <span>We have been working with some Fortune 500+ clients</span>
-        <div className="client-logos">
-          {clients.map((client, index) => (
-            <img src={client} alt="" key={index} />
-          ))}
+        <div className="client-container">
+          <div className="client-logos">
+            {clients.map((client, index) => (
+              <img src={client} alt="" key={index} />
+            ))}
+          </div>
         </div>
+
         <b>Manage your entire community in a single system</b>
         <span>Who is Nextcent suitable for?</span>
         <div className="services-container">
@@ -211,20 +253,17 @@ const LandingPage = () => {
         <div className="portfolio-container">
           <div className="portfolio-card">
             <img src={portfolio1} alt="" />
-            <p>Creating Streamlined Safeguarding Processes with OneRen</p>
+
             <a href="https://frossh.uz/">https://frossh.uz/</a>
           </div>
           <div className="portfolio-card">
             <img src={portfolio2} alt="" />
-            <p>
-              What are your safeguarding responsibilities and how can you manage
-              them?
-            </p>
+
             <a href="https://sanone.uz/">https://sanone.uz/</a>
           </div>
           <div className="portfolio-card">
             <img src={portfolio3} alt="" />
-            <p>Revamping the Membership Model with Triathlon Australia</p>
+
             <a href="http://asilmedia.org/">http://asilmedia.org/</a>
           </div>
         </div>
